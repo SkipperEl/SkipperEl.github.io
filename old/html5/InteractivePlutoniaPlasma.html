@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Plutonia Plasma</title>
+    <script type="text/javascript"><!--
+window.addEventListener('load', function () {
+  // Get the canvas element.
+  var elem = document.getElementById('myCanvas');
+  if (!elem || !elem.getContext) {
+    return;
+  }
+
+  // Get the canvas 2d context.
+  var context = elem.getContext('2d');
+  if (!context || !context.putImageData) {
+    return;
+  }
+
+  var imgd = false,
+  w = 512, h = 512,
+  x = 0,  y = 0;
+
+  // Not all browsers implement createImageData. On such browsers we obtain the 
+  // ImageData object using the getImageData method. The worst-case scenario is 
+  // to create an object *similar* to the ImageData object and hope for the best 
+  // luck.
+  if (context.createImageData) {
+    imgd = context.createImageData(w, h);
+  } else if (context.getImageData) {
+    imgd = context.getImageData(0, 0, w, h);
+  } else {
+    imgd = {'width' : w, 'height' : h, 'data' : new Array(w*h*4)};
+  }
+  var pix = imgd.data;
+
+  // Generate the palette
+  var palette = [];
+  for( var i = 0; i < 64; i++ ) {
+    palette[(i*4)+0] = 0;
+    palette[(i*4)+1] = 255 -((i<<2)+1);
+    palette[(i*4)+2] = i << 2;
+    palette[(i*4)+3] = 255;
+
+    palette[256 + (i*4)+0] = 0;
+    palette[256 + (i*4)+1] = ((i<<2)+1);
+    palette[256 + (i*4)+2] = 255;
+    palette[256 + (i*4)+3] = 255;
+
+    palette[512 + (i*4)+0] = 0;
+    palette[512 + (i*4)+1] = 255 - ((i<<2)+1);
+    palette[512 + (i*4)+2] = 255 - ((i<<2)+1);
+    palette[512 + (i*4)+3] = 255;
+
+    palette[768 + (i*4)+0] = 0;
+    palette[768 + (i*4)+1] = ((i<<2)+1);
+    palette[768 + (i*4)+2] = 0;
+    palette[768 + (i*4)+3] = 255;
+  }
+
+  // Generate the sine table
+  var sintable = [];
+  var rad = 0;
+  for( var i = 0; i < 512; i++ ) {
+    rad = ( i / 512 ) * 3.141592 * 2;
+    sintable[i] = Math.sin(rad) * 1023; 
+  }
+
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  var tpos1 = 0, tpos2 = 0, tpos3 = 3, tpos4 = 0;
+  var mouseX = 256, mouseY = 256;
+
+  function eventMouseMove(event) {
+    if ( event.layerX ||  event.layerX == 0) { // Firefox
+      mouseX = event.layerX;
+      mouseY = event.layerY;
+    } else if (event.offsetX || event.offsetX == 0) { // Opera
+      mouseX = event.offsetX;
+      mouseY = event.offsetY;
+    }
+  }
+
+  elem.addEventListener("mousemove",eventMouseMove, false);
+
+  function draw() {
+          var pixeloffset = 0;
+          for( var i = 0; i < w; i++ ) {
+            tpos1 = pos1 + 5;
+            tpos2 = pos2 + 2;
+
+            tpos3 &= 511;
+            tpos4 &= 511;
+
+            var intermediary_value = sintable[tpos3] + sintable[tpos4];
+
+            for( var j = 0; j < h; j++) {
+              tpos1 &= 511;
+              tpos2 &= 511;
+
+              var x = sintable[tpos1] + sintable[tpos2] + intermediary_value;
+              var index = 128 + ( x >> 4 );
+              index &= 255;
+
+              pix[pixeloffset] = palette[index<<2];
+              pix[pixeloffset + 1] = palette[(index<<2)+1];
+              pix[pixeloffset + 2] = palette[(index<<2)+2];
+              pix[pixeloffset + 3] = 255;
+              pixeloffset += 4;
+
+              tpos1 += 5;
+              tpos2 += 2;
+            }
+
+            tpos4 += 3;
+            tpos3 += 1;
+          }
+	  xinc = -16 + (mouseX >> 4);
+	  yinc = -16 + (mouseY >> 4);
+          pos1 += xinc; // was 9
+          pos3 += yinc; // was 8
+          tpos4 = pos4;
+          tpos3 = pos3;
+
+          // Draw the ImageData object.
+          context.putImageData(imgd, 0, 0);
+  }
+
+  setInterval( draw, 40 );
+}, false);
+    // --></script>
+  </head>
+  <body>
+    <p><canvas id="myCanvas" width="512" height="512">Your browser does not have 
+    support for Canvas.  You should see: <span 
+      style="display:block;width:50px;height:50px;background:#f77">&nbsp;</span></canvas> </p>
+    <p><audio src="./plutonia.mp3" autoplay="autoplay" controls="controls">Your browser does not support the audio element.</audio></p>
+  </body>
+</html>
