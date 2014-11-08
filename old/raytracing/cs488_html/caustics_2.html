@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+<TITLE>Caustics - Part 2</TITLE>
+</HEAD>
+
+<CENTER>
+
+<BODY TEXT="#f0f0f0" LINK="#f0f0f0" VLINK="#a0a0a0" ALINK="#a0a0a0" BGCOLOR="#000000">
+<H1>Caustics - Part 2</H1><BR>
+</CENTER>
+<BR>
+<H3>
+Now that we can render the caustic triangles in a reasonable ammount of time, we can continue on with higher resolution
+water meshes.<BR>
+<BR>
+The following images are the same scene as before, with progressively more/finer caustic triangles.  The last one has
+a 1000x1000 mesh, totalling 2 million caustic triangles.  (Again, these are not anti-aliased.)<BR>
+<BR>
+
+<CENTER>
+<img src="./images/caustic3.png"><BR>
+<img src="./images/caustic4.png"><BR>
+<img src="./images/caustic5.png"><BR>
+</CENTER>
+<BR>
+
+Finally, we enable anti-aliasing:<BR>
+<BR>
+
+<CENTER>
+<img src="./images/caustic6.png"><BR>
+</CENTER>
+<BR>
+
+While caustics are only generated via a water mesh, the rays are refracted generally.  So, we can put refracting objects
+under the surface and generate other kinds of caustics.  In the following scene, a sphere with an index of refraction
+higher than the water is rendered, generating a pleasant caustic effect:<BR>
+<BR>
+<CENTER>
+<img src="./images/bubble3.png"><BR>
+</CENTER>
+<BR>
+
+<H2><A HREF="./bsp.html">Prev</A> <A HREF="./final.html">Next</A><BR>
+
+</BODY>
+</HTML>

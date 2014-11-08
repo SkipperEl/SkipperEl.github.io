@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<TITLE>Binary Space Partitioning</TITLE>
+</HEAD>
+
+<CENTER>
+
+<BODY TEXT="#f0f0f0" LINK="#f0f0f0" VLINK="#a0a0a0" ALINK="#a0a0a0" BGCOLOR="#000000">
+<H1>Binary Space Partitioning</H1><BR>
+</CENTER>
+<BR>
+<H3>
+Before we continue on with the caustics, a slight diversion.<BR>
+<BR>
+It becomes apparent very quickly that creating any sizeable number of caustic triangles will increase the
+rendering complexity immensely.  This is where the optimization objective comes in - Binary Space Partioning.<BR>
+<BR>
+Caustic triangles are projected onto polygons, but checking through large lists of triangles every time a ray hits
+a polygon is expensive.  The workaround was to build a BSP tree of caustic triangles for each polygon onto which
+a caustic triangle is attached.<BR>
+<BR>
+This method drastically reduced the rendering time, as the figures below will illustrate.  While rendering anything
+with a water mesh greater than 50x50 or so proved time consuming before, meshes as high as 1000x1000 were no problem
+once the BSP was implemented.  In fact, without this I probably would not been able to create any images of 
+reasonable quality.<BR>
+<BR>
+A few timings are listed below, performed on decane.  Nothing else was run at the time, and nobody else (as
+fas as I could tell by periodically running who) was using the machine.  The script used was speed_test.gr,
+which is a very simple box with a water surface rendered at 500x500, no anti-aliasing.  All times include
+overhead involved, such as building the BSP, flattening the tree, etc.<BR>
+<BR>
+For a 20x20 water mesh with no BSP, the render time was 1:02.58, while with the BSP activated only 0:29.24.<BR>
+<BR>
+For 50x50, the render time was 5:27.67 with no BSP, 0:24.17 with.<BR>
+<BR>
+Finally, for 100x100, the render time was 25:37.57 with no BSP, 0:28.12 with.<BR>
+<BR>
+Notice that increasing the density of the mesh significatly increases the rendering time when no BSP is used, while
+it essentially stays constant when it is.<BR>
+<BR>
+A good way to understand this is to look at the number of triangles that must be tested when a ray hits a polygon
+with caustics.  The following BSP stats were generated from the three runs above:<BR>
+<BR>
+min 6 max 22 avg 12.976744<BR>
+min 7 max 23 avg 12.235294<BR>
+min 4 max 4 avg 4.000000<BR>
+min 2 max 58 avg 14.344059<BR>
+<BR>
+min 1 max 33 avg 13.229508<BR>
+min 1 max 47 avg 14.061538<BR>
+min 16 max 16 avg 16.000000<BR>
+min 1 max 209 avg 19.829578<BR>
+<BR>
+min 1 max 57 avg 14.627054<BR>
+min 1 max 68 avg 14.917663<BR>
+min 11 max 69 avg 18.899441<BR>
+min 2 max 375 avg 26.223977<BR>
+<BR>
+These are min, max and average sizes of leaf nodes in the BSPs created for each polygon. <BR> 
+<BR>
+Notice that the size does not increase substantially.  When a point hits a polygon, the BSP tree is traversed,
+and the point is tested against only the small number of triangles in the leaf node found.  So while the water
+mesh complexity may increase substantially, the complexity of dealing with the caustics only increases slightly.<BR>
+<BR>
+Final images were all rendered with 1000x1000 meshes, which would have been extremely difficult without this
+optimization.<BR>
+
+
+<H2><A HREF="./caustics_1.html">Prev</A> <A HREF="./caustics_2.html">Next</A><BR>
+
+</BODY>
+</HTML>

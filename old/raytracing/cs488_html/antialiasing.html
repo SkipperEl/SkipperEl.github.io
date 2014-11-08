@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<TITLE>Anti-Aliasing</TITLE>
+</HEAD>
+
+<CENTER>
+
+<BODY TEXT="#f0f0f0" LINK="#f0f0f0" VLINK="#a0a0a0" ALINK="#a0a0a0" BGCOLOR="#000000">
+<H1>Anti-Aliasing</H1><BR>
+</CENTER>
+<BR>
+<H3>
+Anti-aliasing was implemented by supersampling (3 by 3 samples per pixel), averaging the
+results (no weighting), and jittering by 1/8th of a pixel.  Below are two pairs of sample
+images which illustrate the difference anti-aliasing makes.<BR>
+<BR>
+Note how the jagged edges of the polygon vanishe almost entirely, while the curves of the
+spheres are much smoother.  I was so taken aback at the difference that I chose to show
+this objective first.  From now on, unless otherwise stated, all images are anti-aliased.<BR>
+<BR>
+The images on the left are not anti-aliased, those on the right are:<BR>
+<BR>
+<img src="./images/antialias1.png">
+<img src="./images/antialias1_aa.png">
+<BR>
+<img src="./images/nonhier_ref.png">
+<img src="./images/nonhier_ref_aa.png">
+<BR>
+<BR>
+<H2><A HREF="./texture.html">Next</A><BR>
+
+</BODY>
+</HTML>
