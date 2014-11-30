@@ -10,17 +10,17 @@ relative_permalinks: true
 
 # Setup
 title:               Random Sequence Of Letters
-#tagline:             'A Jekyll theme'
-description:         'A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-url:                 http://lanyon.getpoole.com
+#tagline:             'Stuff goes here'
+description:         'Varied musings on topics of personal interest.'
+url:                 http://blog.crabbycoder.ca
 baseurl:             /
 paginate:            5
 
 # About/contact
 author:
-  name:              Mark Otto
-  url:               https://twitter.com/mdo
-  email:             markdotto@gmail.com
+  name:              Elliott Noel
+  url:               https://twitter.com/SkipperEl
+  email:             blog@rsol.ca
 
 # Custom vars
 version:             1.0.0
