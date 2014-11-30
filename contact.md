@@ -3,4 +3,5 @@ layout: page
 title: Contact
 ---
 
-I can be reached on Twitter [@SkipperEl](https://twitter.com/SkipperEl) or by email at blog at crabbycoder dot ca.
+* Email: blog at crabbycoder dot ca
+* Twitter: [@SkipperEl](https://twitter.com/SkipperEl)
