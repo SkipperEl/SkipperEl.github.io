@@ -12,7 +12,7 @@ relative_permalinks: true
 title:               Random Sequence Of Letters
 #tagline:             'Musings on topics of personal interest'
 description:         'Varied musings on topics of personal interest.'
-url:                 http://blog.crabbycoder.ca
+url:                 http://blog.rsol.ca
 baseurl:             /
 paginate:            5
 
