@@ -3,6 +3,6 @@ layout: page
 title: About
 ---
 
-This space exists largely as a way to drain ideas out of my brain so that I will hopefully stop obsessing about them. Any value derived by reading RSOL is entirely unintentional.
+This space exists to vent thoughts from my brain, providing relief from their burden. Any value derived by consuming this expression is purely unintentional.
 
 Viewer discretion is advised.
