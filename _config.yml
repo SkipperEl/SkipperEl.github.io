@@ -10,7 +10,7 @@ relative_permalinks: true
 
 # Setup
 title:               Random Sequence Of Letters
-#tagline:             'Stuff goes here'
+#tagline:             'Musings on topics of personal interest'
 description:         'Varied musings on topics of personal interest.'
 url:                 http://blog.crabbycoder.ca
 baseurl:             /
