@@ -1,6 +1,7 @@
 ---
 layout: post
 title: An Introduction
+tags: [meta]
 ---
 
 Welcome to Random Sequence Of Letters. This space exists to vent ideas from my brain, relieving me (somewhat) of the urge to maintain them. 
