@@ -14,7 +14,7 @@ title:               Random Sequence Of Letters
 description:         'Varied musings on topics of personal interest.'
 url:                 http://blog.rsol.ca
 baseurl:             /
-paginate:            5
+paginate:            8
 
 # About/contact
 author:
