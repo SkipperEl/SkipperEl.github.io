@@ -1,10 +1,10 @@
 ---
 layout: post
 title: An Introduction
-tags: [meta]
+categories: meta
 ---
 
-Welcome to Random Sequence Of Letters. This space exists to vent ideas from my brain, relieving me (somewhat) of the urge to maintain them. 
+Welcome to Random Sequence Of Letters. This space exists to vent ideas from my brain, relieving me (somewhat) of the urge to maintain them.
 
 Despite my best wishes, I find myself mentally composing blog posts at inconvenient times when I would much rather be thinking about something useful. RSOL is thus an admission of failure of sorts - that these thoughts must be written down so that I may get on with it.
 
