@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lego: The Next Generation
+title: Lego The Next Generation
 ----
 
 Growing up, [Lego] - and its larger but simpler sibling [Duplo] - was a huge deal for me. It was one of the first toys I was exposed to and the very last to be put away, well into my teens. It evolved and grew with me for over a decade, returning again sporadically into my adulthood in various forms.
